@@ -17,6 +17,15 @@ pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tessera
 # Set up Application
 app = ApplicationBuilder().token(TOKEN).build()
 
+
+import platform
+
+if platform.system() == "Windows":
+    from comtypes import client
+else:
+    print("Skipping COM-related imports as this is not a Windows system.")
+
+
 # Conversion functions
 def docx_to_pdf(input_path, output_path):
     try:
